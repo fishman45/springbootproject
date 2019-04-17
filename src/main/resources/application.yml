@@ -12,7 +12,7 @@ spring:
       max-active: 100
       test-on-borrow: true
 
-    #    #连接池配置_2
+    # #连接池配置_2
     #    datasource:
     #      driver-class-name: com.mysql.jdbc.Driver
     #      # 使用druid数据源
@@ -41,6 +41,24 @@ spring:
     #main:
     #当遇到同样名字的时候，是否允许覆盖注册
     #allow-bean-definition-overriding: true
+
+  #thymelea模板配置
+  thymeleaf:
+      prefix: classpath:/static/
+      suffix: .html
+      mode: HTML5
+      encoding: UTF-8
+      #热部署文件，页面不产生缓存，及时更新
+      cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+
+
+
 
 logging:
   config: classpath:log4j2.yml
