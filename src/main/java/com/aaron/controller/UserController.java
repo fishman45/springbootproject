@@ -67,8 +67,8 @@ public class UserController {
      */
     @RequestMapping("/getError")
     public String GetError() throws Exception {
-        Logger log1 = LogUtil.getBussinessLogger();
-        log1.error("Controller报错啦!");
+        Logger businessLogger = LogUtil.getBusinessLogger();
+        businessLogger.error("Controller报错啦!");
         throw new Exceptions(ResultEnum.FAIL);
     }
 }

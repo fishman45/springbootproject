@@ -6,12 +6,14 @@ import com.aaron.enums.LogEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+/**
+ * @author lfl
+ */
 public class LogUtil {
     /**
      * 获取业务日志logger
      */
-    public static Logger getBussinessLogger() {
+    public static Logger getBusinessLogger() {
         return LoggerFactory.getLogger(LogEnum.BUSSINESS.getCategory());
     }
 
