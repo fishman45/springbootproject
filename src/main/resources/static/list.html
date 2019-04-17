@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>数据列表</title>
+</head>
+<body>
+<h3 th:text="${userModel.title}">Welcome to springboot</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <td>编号</td>
+        <td>登录名称</td>
+        <td>密码</td>
+        <td>真实姓名</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${userModel.userList.size()} eq 0">
+        <td colspan="3">没有用户信息！！</td>
+    </tr>
+    <tr th:each="user : ${userModel.userList}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.userName}"></td>
+        <td th:text="${user.passWord}"></td>
+        <td th:text="${user.realName}"></td>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>
