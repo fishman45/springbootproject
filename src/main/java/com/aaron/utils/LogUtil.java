@@ -2,7 +2,6 @@ package com.aaron.utils;
 
 
 import com.aaron.enums.LogEnum;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +26,7 @@ public class LogUtil {
     /**
      * 获取数据库日志logger
      */
-    public static Logger getDBLogger() {
+    public static Logger getDbLogger() {
         return LoggerFactory.getLogger(LogEnum.DB.getCategory());
     }
 

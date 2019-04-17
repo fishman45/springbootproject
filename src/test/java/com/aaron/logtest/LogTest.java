@@ -13,12 +13,12 @@ public class LogTest {
 
     @Test
     public void logTest() {
-        Logger log = LogUtil.getExceptionLogger();
-        Logger log1 = LogUtil.getBussinessLogger();
-        Logger log2 = LogUtil.getDBLogger();
+        Logger exceptionLogger = LogUtil.getExceptionLogger();
+        Logger businessLogger = LogUtil.getBusinessLogger();
+        Logger DbLogger = LogUtil.getDbLogger();
 
-        log.error("getExceptionLogger===日志测试");
-        log1.info("getBussinessLogger===日志测试");
-        log2.debug("getDBLogger===日志测试");
+        exceptionLogger.error("getExceptionLogger===日志测试");
+        businessLogger.info("getBussinessLogger===日志测试");
+        DbLogger.debug("getDBLogger===日志测试");
     }
 }
