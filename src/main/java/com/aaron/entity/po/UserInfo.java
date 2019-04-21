@@ -1,25 +1,27 @@
-package com.aaron.entity;
+package com.aaron.entity.po;
 
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Column;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+/**
+ * @author: lfl
+ * @descriptino: 用户实体类
+ */
 @Data
 @Builder
-@Table(name = "user")
-public class User implements Serializable {
+@Table(name = "user_info")
+public class UserInfo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Integer id;
 
-    @Column(name = "userName")
     private String userName;
 
-    @Column(name = "passWord")
     private String passWord;
 
-    @Column(name = "realName")
     private String realName;
 }

@@ -1,7 +1,7 @@
 package com.aaron.controller;
 
-import com.aaron.entity.Exceptions;
-import com.aaron.entity.User;
+import com.aaron.entity.common.Exceptions;
+import com.aaron.entity.po.UserInfo;
 import com.aaron.enums.ResultEnum;
 import com.aaron.services.UserService;
 import com.aaron.utils.LogUtil;
@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+/**
+ * @author: lfl
+ * @description: UserController层
+ * @date: Create in 2019/4/21 上午 09:24
+ */
 @Controller
 @RequestMapping("/testBoot")
 public class UserController {
@@ -25,45 +29,43 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 测试mybatis后台读取数据
-     *
      * @param id
      * @return
+     * @description: 测试mybatis后台读取数据
      */
     @ResponseBody
-    @RequestMapping("getUser/{id}")
-    public String getUser(@PathVariable int id) {
-        return userService.getUser(id).toString();
+    @RequestMapping("/selectOne/{id}")
+    public UserInfo getUser(@PathVariable int id) {
+        UserInfo user = UserInfo.builder().id(id).build();
+        return userService.selectOne(user);
     }
 
     /**
-     * 测试tkmybatis后台读取数据
-     *
      * @return
+     * @description: 测试tkmybatis后台读取数据
      */
     @ResponseBody
-    @RequestMapping("getAll")
-    public List<User> getAll() {
-        return userService.getAll();
+    @RequestMapping("/selectAll")
+    public List<UserInfo> getAll() {
+        return userService.selectAll();
     }
 
     /**
-     * thymeleaf获取数据
      * @param model
      * @return
+     * @description: thymeleaf获取数据
      */
-    @GetMapping
+    @RequestMapping("/list")
     public ModelAndView getAll(Model model) {
-        model.addAttribute("userList", userService.getAll());
-        model.addAttribute("title","获取所有数据");
-        return new ModelAndView("list","userModel",model);
+        model.addAttribute("userList", userService.selectAll());
+        model.addAttribute("title", "获取所有数据");
+        return new ModelAndView("list", "userModel", model);
     }
 
     /**
-     * 统一异常处理
-     *
      * @return
      * @throws Exception
+     * @description: 统一异常处理
      */
     @RequestMapping("/getError")
     public String GetError() throws Exception {

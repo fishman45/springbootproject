@@ -1,6 +1,6 @@
 package com.aaron.config;
 
-import com.aaron.entity.Druid;
+import com.aaron.entity.common.Druid;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;

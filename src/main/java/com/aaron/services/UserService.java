@@ -1,23 +1,24 @@
 package com.aaron.services;
 
-import com.aaron.entity.User;
-import com.aaron.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.aaron.entity.po.UserInfo;
 
 import java.util.List;
 
-@Service
-public class UserService {
+/**
+ * @Author: lfl
+ * @Description: 用户接口层
+ */
+public interface UserService {
 
-    @Autowired
-    UserMapper userMapper;
+    /**
+     * @return User
+     * @description: 查询一条数据
+     */
+    UserInfo selectOne(UserInfo user);
 
-    public User getUser(int id) {
-        return userMapper.getUser(id);
-    }
-
-    public List<User> getAll(){
-        return userMapper.selectAll();
-    }
+    /**
+     * @return List<User>
+     * @description: 查询所有数据
+     */
+    List<UserInfo> selectAll();
 }

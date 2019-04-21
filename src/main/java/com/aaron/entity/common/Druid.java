@@ -1,8 +1,12 @@
-package com.aaron.entity;
+package com.aaron.entity.common;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * @author: lfl
+ * @description: druid实体类
+ */
 @Data
 @ConfigurationProperties(prefix = "druid")
 public class Druid {

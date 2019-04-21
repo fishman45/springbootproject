@@ -1,6 +1,6 @@
 package com.aaron.servicetest;
 
-import com.aaron.entity.User;
+import com.aaron.entity.po.UserInfo;
 import com.aaron.services.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,22 +10,26 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+/**
+ * @author: lfl
+ * @description:
+ * @date: Create in 2019/4/21 上午 10:42
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserTest {
-
+public class UserServiceTest {
     @Autowired
     UserService userService;
 
     @Test
-    public void getUser(){
-        User user = userService.getUser(1);
-        System.out.println(user);
+    public void selectOne() {
+        UserInfo user = UserInfo.builder().id(1).build();
+        System.out.println(userService.selectOne(user));
     }
 
     @Test
-    public void getAllTest(){
-        List<User> userList = userService.getAll();
+    public void selectAll() {
+        List<UserInfo> userList = userService.selectAll();
         System.out.println(userList);
     }
 }

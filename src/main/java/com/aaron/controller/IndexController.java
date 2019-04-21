@@ -5,6 +5,12 @@ import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+
+/**
+ * @author: lfl
+ * @description: 首页
+ * @date: Create in 2019/4/21 上午 09:24
+ */
 @Configuration
 public class IndexController extends WebMvcConfigurerAdapter {
 
