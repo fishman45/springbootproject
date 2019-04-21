@@ -1,4 +1,4 @@
-package com.aaron.config;//package com.aaron.config;
+package com.aaron.config.druid;//package com.aaron.config;
 //
 //import com.alibaba.druid.support.http.StatViewServlet;
 //import com.alibaba.druid.support.http.WebStatFilter;

@@ -1,4 +1,4 @@
-package com.aaron.config;
+package com.aaron.config.druid;
 
 import com.aaron.entity.common.Druid;
 import com.alibaba.druid.pool.DruidDataSource;
