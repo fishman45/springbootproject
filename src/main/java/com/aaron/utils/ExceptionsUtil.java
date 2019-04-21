@@ -1,6 +1,6 @@
 package com.aaron.utils;
 
-import com.aaron.entity.Exceptions;
+import com.aaron.entity.common.Exceptions;
 import com.aaron.enums.ResultEnum;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author: lfl
+ * @description: 统一异常处理类
+ */
 @ControllerAdvice
-public class ControllerExceptionsUtil {
+public class ExceptionsUtil {
 
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
