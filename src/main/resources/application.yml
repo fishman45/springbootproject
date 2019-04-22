@@ -44,7 +44,7 @@ spring:
 
   #thymelea模板配置
   thymeleaf:
-      prefix: classpath:/static/
+      prefix: /pages/
       suffix: .html
       mode: HTML5
       encoding: UTF-8
@@ -56,9 +56,6 @@ spring:
         content:
           enabled: true
           paths: /**
-
-
-
 
 logging:
   config: classpath:log4j2.yml

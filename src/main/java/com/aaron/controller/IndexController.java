@@ -16,7 +16,7 @@ public class IndexController extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/static/index.html");
+        registry.addViewController("/").setViewName("forward:/pages/index.html");
         // Ordered必须设置为最高级，即使其他的RequestMapping有相同的映射也会优先加在这个配置
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
         super.addViewControllers(registry);
