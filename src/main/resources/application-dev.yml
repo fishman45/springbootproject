@@ -18,14 +18,3 @@ spring:
         max-idle: 8
         min-idle: 0
     timeout: 50
-
-mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.aaron.entity
-
-#showSql
-logging:
-  level:
-    com:
-      example:
-        mapper : debug

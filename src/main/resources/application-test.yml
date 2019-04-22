@@ -22,16 +22,3 @@ spring:
         min-idle: 0
     # 连接超时时间（毫秒）
     timeout: 50
-
-mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.aaron.entity
-#  configuration:
-#    map-underscore-to-camel-case: false
-
-#showSql
-logging:
-  level:
-    com:
-      example:
-        mapper: debug

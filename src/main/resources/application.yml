@@ -57,5 +57,21 @@ spring:
           enabled: true
           paths: /**
 
+  #jsp配置
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .jsp
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.aaron.entity
+
+#log配置
 logging:
   config: classpath:log4j2.yml
+  level:
+      com:
+        example:
+          mapper: debug
