@@ -7,6 +7,7 @@ import com.aaron.services.UserService;
 import com.aaron.utils.LogUtil;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +36,8 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping("/selectOne/{id}")
-    public UserInfo getUser(@PathVariable int id) {
+    @Cacheable(value = "selectOne")
+    public UserInfo selectOne(@PathVariable int id) {
         UserInfo user = UserInfo.builder().id(id).build();
         return userService.selectOne(user);
     }
@@ -46,7 +48,8 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping("/selectAll")
-    public List<UserInfo> getAll() {
+    @Cacheable(value = "selectAll")
+    public List<UserInfo> selectAll() {
         return userService.selectAll();
     }
 
@@ -56,7 +59,7 @@ public class UserController {
      * @description: thymeleaf获取数据
      */
     @RequestMapping("/list")
-    public ModelAndView getAll(Model model) {
+    public ModelAndView selectAll(Model model) {
         model.addAttribute("userList", userService.selectAll());
         model.addAttribute("title", "获取所有数据");
         return new ModelAndView("list", "userModel", model);
