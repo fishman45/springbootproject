@@ -15,8 +15,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
-import java.lang.reflect.Method;
-
 /**
  * @author: lfl
  * @description:
@@ -26,6 +24,8 @@ import java.lang.reflect.Method;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
+    private RedisConnectionFactory connectionFactory;
+
     /**
      * 自定义生成key的规则
      *
@@ -33,23 +33,19 @@ public class RedisConfig extends CachingConfigurerSupport {
      */
     @Override
     public KeyGenerator keyGenerator() {
-        return new KeyGenerator() {
-            @Override
-            public Object generate(Object o, Method method, Object... objects) {
-
-                // 格式化缓存key字符串
-                StringBuilder sb = new StringBuilder();
-                // 追加类名
-                sb.append(o.getClass().getName());
-                // 追加方法名
-                sb.append(method.getName());
-                // 遍历参数并追加
-                for (Object obj : objects) {
-                    sb.append(obj.toString());
-                }
-                System.out.println("调用Redis缓存Key:" + sb.toString());
-                return sb.toString();
+        return (o, method, objects) -> {
+            // 格式化缓存key字符串
+            StringBuilder sb = new StringBuilder();
+            // 追加类名
+            sb.append(o.getClass().getName());
+            // 追加方法名
+            sb.append(method.getName());
+            // 遍历参数并追加
+            for (Object obj : objects) {
+                sb.append(obj.toString());
             }
+            System.out.println("调用Redis缓存Key:" + sb.toString());
+            return sb.toString();
         };
     }
 
@@ -61,12 +57,11 @@ public class RedisConfig extends CachingConfigurerSupport {
      */
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
-        RedisCacheManager redisCacheManager = RedisCacheManager.create(connectionFactory);
-        return redisCacheManager;
+        this.connectionFactory = connectionFactory;
+        return RedisCacheManager.create(connectionFactory);
     }
 
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
-
         // 解决键、值序列化问题
         StringRedisTemplate template = new StringRedisTemplate(factory);
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
