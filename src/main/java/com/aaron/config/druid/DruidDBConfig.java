@@ -11,7 +11,9 @@ package com.aaron.config.druid;//package com.aaron.config;
 //import java.util.Map;
 //
 ///**
-// * @Description 连接池配置_2
+// * @author: lfl
+// * @description: 连接池配置_2
+// * @date: Create in 2019/4/21 上午 10:42
 // */
 //@Configuration
 //public class DruidDBConfig {

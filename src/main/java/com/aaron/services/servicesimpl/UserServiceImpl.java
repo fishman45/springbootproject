@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @Author: lfl
- * @Descripiton: 用户Service层
+ * @author: lfl
+ * @description: 用户Service层
+ * @date: Create in 2019/5/2 下午 01:02
  */
 @Service
 public class UserServiceImpl implements UserService {

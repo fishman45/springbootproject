@@ -5,7 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @Description: 启动类
+ * @author: lfl
+ * @description: 启动类
+ * @date: Create in 2019/5/2 下午 01:02
  */
 @MapperScan("com.aaron.mapper")
 @SpringBootApplication

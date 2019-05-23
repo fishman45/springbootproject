@@ -6,14 +6,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author lfl
+ * @author: lfl
+ * @description: 统一异常处理工具类
+ * @date: Create in 2019/5/2 下午 01:02
  */
 public class LogUtil {
     /**
      * 获取业务日志logger
      */
     public static Logger getBusinessLogger() {
-        return LoggerFactory.getLogger(LogEnum.BUSSINESS.getCategory());
+        return LoggerFactory.getLogger(LogEnum.BUSINESS.getCategory());
     }
 
     /**

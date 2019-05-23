@@ -7,6 +7,11 @@ import org.slf4j.Logger;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * @author: lfl
+ * @description: 日志测试类
+ * @date: Create in 2019/5/2 下午 01:02
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LogTest {
@@ -18,7 +23,7 @@ public class LogTest {
         Logger DbLogger = LogUtil.getDbLogger();
 
         exceptionLogger.error("getExceptionLogger===日志测试");
-        businessLogger.info("getBussinessLogger===日志测试");
+        businessLogger.info("getBusinessLogger===日志测试");
         DbLogger.debug("getDBLogger===日志测试");
     }
 }

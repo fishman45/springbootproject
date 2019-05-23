@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * @author: lfl
+ * @description: Redis测试类
+ * @date: Create in 2019/5/2 下午 01:02
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RedisTest {

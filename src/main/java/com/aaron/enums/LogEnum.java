@@ -8,9 +8,9 @@ package com.aaron.enums;
 public enum LogEnum {
 
     /**
-     * bussiness
+     * business
      */
-    BUSSINESS("bussiness"),
+    BUSINESS("business"),
 
     /**
      * platform

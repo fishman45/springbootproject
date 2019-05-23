@@ -5,8 +5,9 @@ import com.aaron.entity.po.UserInfo;
 import java.util.List;
 
 /**
- * @Author: lfl
- * @Description: 用户接口层
+ * @author: lfl
+ * @description: 用户接口层
+ * @date: Create in 2019/5/2 下午 01:02
  */
 public interface UserService {
 

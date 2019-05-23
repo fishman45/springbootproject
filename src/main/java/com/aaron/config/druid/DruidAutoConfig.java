@@ -15,7 +15,9 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 /**
- * @Description 连接池配置_1
+ * @author: lfl
+ * @description: 连接池配置_1
+ * @date: Create in 2019/4/21 上午 10:42
  */
 @Configuration
 @EnableConfigurationProperties(Druid.class)

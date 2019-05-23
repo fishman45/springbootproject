@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author: lfl
  * @description: druid实体类
+ * @date: Create in 2019/4/21 上午 10:42
  */
 @Data
 @ConfigurationProperties(prefix = "druid")

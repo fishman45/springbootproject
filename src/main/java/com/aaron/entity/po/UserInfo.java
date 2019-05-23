@@ -8,7 +8,8 @@ import java.io.Serializable;
 
 /**
  * @author: lfl
- * @descriptino: 用户实体类
+ * @description: 用户实体类
+ * @date: Create in 2019/4/21 上午 10:42
  */
 @Data
 @Builder
