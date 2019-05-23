@@ -1,5 +1,10 @@
 package com.aaron.enums;
 
+/**
+ * @author: lfl
+ * @description:
+ * @date: Create in 2019/5/2 下午 01:02
+ */
 public enum ResultEnum {
 
     UN_KNOW_ERROR(-1, "未知错误"),
