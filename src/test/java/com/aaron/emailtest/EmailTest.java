@@ -46,8 +46,8 @@ public class EmailTest {
     @Test
     public void sendEmailWithAttachments() {
         Map<String, File> fileMap = new HashMap<>();
-        fileMap.put("image1.jpg", new File("D:\\LearningNotes\\picture\\msm相关依赖.png"));
-        fileMap.put("image2.jpg", new File("D:\\LearningNotes\\picture\\RabbitMQ模型架构.png"));
+        fileMap.put("image1.jpg", new File("E:\\Aaron\\picture\\附件1.png"));
+        fileMap.put("image2.jpg", new File("E:\\Aaron\\picture\\附件2.png"));
         emailUtil.sendEmailWithAttachments(from, authWord, to, "发送带附件的邮件"
                 , "Hello Spring Email", fileMap);
     }
@@ -58,7 +58,7 @@ public class EmailTest {
     @Test
     public void sendEmailWithInline() {
         emailUtil.sendEmailWithInline(from, authWord, to, "发送带内嵌资源的邮件"
-                , "Hello Spring Email", new File("D:\\LearningNotes\\picture\\RabbitMQ模型架构.png"));
+                , "Hello Spring Email", new File("E:\\Aaron\\picture\\附件3.png"));
     }
 
     /**
