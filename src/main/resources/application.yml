@@ -42,9 +42,9 @@ spring:
     #当遇到同样名字的时候，是否允许覆盖注册
     #allow-bean-definition-overriding: true
 
-  #thymelea模板配置
+  #thymelea配置
   thymeleaf:
-      prefix: /pages/
+      prefix: /views/
       suffix: .html
       mode: HTML5
       encoding: UTF-8
@@ -56,12 +56,6 @@ spring:
         content:
           enabled: true
           paths: /**
-
-  #jsp配置
-  mvc:
-    view:
-      prefix: /pages/
-      suffix: .jsp
 
 #mybatis配置
 mybatis:
