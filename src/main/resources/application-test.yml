@@ -30,3 +30,7 @@ spring:
     timeout: 50
     # 默认是索引为0的数据库
     database: 0
+
+#swagger启用开关(开发、测试环境可以开启，正式环境不开启，避免暴露接口)
+swagger:
+  enable: true
