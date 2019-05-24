@@ -23,12 +23,6 @@ public class EmailTest {
     @Autowired
     private EmailUtil emailUtil;
 
-    // 发送方邮箱地址
-    private static final String from = "1289563709@qq.com";
-
-    // 发送方邮箱地址对应的授权码
-    private static final String authWord = "dyllkbtpfnthjfbb";
-
     // 接收方邮箱地址
     private static final String to = "361647454@qq.com";
 
@@ -37,7 +31,7 @@ public class EmailTest {
      */
     @Test
     public void sendMessage() {
-        emailUtil.sendTextMessage(from, authWord, to, "发送简单邮件", "Hello Spring Email");
+        emailUtil.sendTextMessage(to, "发送简单邮件", "Hello Spring Email");
     }
 
     /**
@@ -48,7 +42,7 @@ public class EmailTest {
         Map<String, File> fileMap = new HashMap<>();
         fileMap.put("image1.jpg", new File("E:\\Aaron\\picture\\附件1.png"));
         fileMap.put("image2.jpg", new File("E:\\Aaron\\picture\\附件2.png"));
-        emailUtil.sendEmailWithAttachments(from, authWord, to, "发送带附件的邮件"
+        emailUtil.sendEmailWithAttachments(to, "发送带附件的邮件"
                 , "Hello Spring Email", fileMap);
     }
 
@@ -57,7 +51,7 @@ public class EmailTest {
      */
     @Test
     public void sendEmailWithInline() {
-        emailUtil.sendEmailWithInline(from, authWord, to, "发送带内嵌资源的邮件"
+        emailUtil.sendEmailWithInline(to, "发送带内嵌资源的邮件"
                 , "Hello Spring Email", new File("E:\\Aaron\\picture\\附件3.png"));
     }
 
@@ -66,7 +60,6 @@ public class EmailTest {
      */
     @Test
     public void sendEmailByTemplate() {
-        emailUtil.sendEmailByTemplate(from, authWord, to,
-                "使用模板邮件", "Hello Spring Email");
+        emailUtil.sendEmailByTemplate(to, "使用模板邮件", "Hello Spring Email");
     }
 }

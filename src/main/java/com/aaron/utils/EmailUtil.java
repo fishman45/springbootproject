@@ -3,6 +3,7 @@ package com.aaron.utils;
 import org.beetl.core.GroupTemplate;
 import org.beetl.core.Template;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -29,21 +30,20 @@ public class EmailUtil {
     @Autowired
     private GroupTemplate groupTemplate;
 
+    @Value("${spring.mail.username}")
+    private String username;
+
     /**
-     * @param from     发送方邮箱地址
-     * @param authWord 授权码
-     * @param to       接收方邮箱地址
+     * @param to
      * @param subject
      * @param content
      * @description: 发送简单邮件
      */
-    public void sendTextMessage(String from, String authWord, String to, String subject, String content) {
-        // 设置发送人邮箱和授权码
-        mailSender.setUsername(from);
-        mailSender.setPassword(authWord);
+    public void sendTextMessage(String to, String subject, String content) {
+
         // 实例化消息对象
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setFrom(from);
+        msg.setFrom(username);
         msg.setTo(to);
         msg.setSubject(subject);
         msg.setText(content);
@@ -57,25 +57,20 @@ public class EmailUtil {
     }
 
     /**
-     * @param from     发送方邮箱地址
-     * @param authWord 授权码
-     * @param to       接收方邮箱地址
+     * @param to
      * @param subject
      * @param content
      * @param files
      * @description: 发送带附件的邮件
      */
-    public void sendEmailWithAttachments(String from, String authWord, String to, String subject,
+    public void sendEmailWithAttachments(String to, String subject,
                                          String content, Map<String, File> files) {
         try {
-            // 设置发送人邮箱和授权码
-            mailSender.setUsername(from);
-            mailSender.setPassword(authWord);
             // 实例化消息对象
             MimeMessage message = mailSender.createMimeMessage();
             // 需要指定第二个参数为true 代表创建支持可选文本，内联元素和附件的多部分消息
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-            helper.setFrom(from);
+            helper.setFrom(username);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(content);
@@ -92,25 +87,19 @@ public class EmailUtil {
     }
 
     /**
-     * @param from     发送方邮箱地址
-     * @param authWord 授权码
-     * @param to       接收方邮箱地址
+     * @param to
      * @param subject
      * @param content
      * @param file
      * @description: 发送带内嵌资源的邮件
      */
-    public void sendEmailWithInline(String from, String authWord, String to,
-                                    String subject, String content, File file) {
+    public void sendEmailWithInline(String to, String subject, String content, File file) {
         try {
-            // 设置发送人邮箱和授权码
-            mailSender.setUsername(from);
-            mailSender.setPassword(authWord);
             // 实例化消息对象
             MimeMessage message = mailSender.createMimeMessage();
             // 需要指定第二个参数为true 代表创建支持可选文本，内联元素和附件的多部分消息
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-            helper.setFrom(from);
+            helper.setFrom(username);
             helper.setTo(to);
             helper.setSubject(subject);
             // 使用true标志来指示包含的文本是HTML 固定格式资源前缀 cid:
@@ -127,28 +116,22 @@ public class EmailUtil {
     }
 
     /**
-     * @param from     发送方邮箱地址
-     * @param authWord 授权码
-     * @param to       接收方邮箱地址
+     * @param to
      * @param subject
      * @param content
      * @description: 使用模板邮件
      */
-    public void sendEmailByTemplate(String from, String authWord, String to,
-                                    String subject, String content) {
+    public void sendEmailByTemplate(String to, String subject, String content) {
         try {
             Template t = groupTemplate.getTemplate("template.html");
             t.binding("subject", subject);
             t.binding("content", content);
             String text = t.render();
-            // 设置发送人邮箱和授权码
-            mailSender.setUsername(from);
-            mailSender.setPassword(authWord);
             // 实例化消息对象
             MimeMessage message = mailSender.createMimeMessage();
             // 指定 utf-8 防止乱码
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-            helper.setFrom(from);
+            helper.setFrom(username);
             helper.setTo(to);
             helper.setSubject(subject);
             // 为true 时候 表示文本内容以 html 渲染
