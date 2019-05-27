@@ -1,8 +1,10 @@
 package com.aaron.config.email;
 
+import com.aaron.entity.common.Email;
 import org.beetl.core.GroupTemplate;
 import org.beetl.core.resource.ClasspathResourceLoader;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,17 +18,12 @@ import java.io.IOException;
  * @date: Create in 2019/5/23 下午 04:43
  */
 @Configuration
+@EnableConfigurationProperties(Email.class)
 @ComponentScan(value = "com.aaron.utils")
 public class EmailConfig {
 
-    @Value("${spring.mail.host}")
-    private String host;
-
-    @Value("${spring.mail.username}")
-    private String username;
-
-    @Value("${spring.mail.password}")
-    private String authWord;
+    @Autowired
+    private Email email;
 
     /**
      * 在这里可以声明不同的邮件服务器主机，
@@ -37,10 +34,10 @@ public class EmailConfig {
     @Bean(name = "mainSender")
     JavaMailSenderImpl javaMailSender() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.setHost(host);
+        javaMailSender.setHost(email.getHost());
         // 设置发送人邮箱和授权码
-        javaMailSender.setUsername(username);
-        javaMailSender.setPassword(authWord);
+        javaMailSender.setUsername(email.getUsername());
+        javaMailSender.setPassword(email.getPassword());
         return javaMailSender;
     }
 

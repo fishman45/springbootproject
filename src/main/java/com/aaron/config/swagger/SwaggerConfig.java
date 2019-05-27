@@ -1,7 +1,9 @@
 package com.aaron.config.swagger;
 
+import com.aaron.entity.common.Swagger;
 import com.google.common.base.Predicate;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -22,10 +24,11 @@ import static springfox.documentation.builders.PathSelectors.regex;
  */
 @Configuration
 @EnableSwagger2
+@EnableConfigurationProperties(Swagger.class)
 public class SwaggerConfig {
 
-    @Value("${swagger.enable}")
-    private boolean swaggerEnable;
+    @Autowired
+    private Swagger swagger;
 
     /***
      * 配置swagger
@@ -34,7 +37,7 @@ public class SwaggerConfig {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .enable(swaggerEnable)
+                .enable(swagger.isEnable())
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.aaron.controller"))
