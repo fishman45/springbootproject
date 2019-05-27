@@ -13,5 +13,8 @@ import org.springframework.context.annotation.PropertySource;
 @ConfigurationProperties(prefix = "swagger")
 public class Swagger {
 
+    /**
+     * 是否开启swagger
+     */
     private boolean enable;
 }
