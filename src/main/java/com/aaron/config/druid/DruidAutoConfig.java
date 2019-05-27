@@ -26,24 +26,24 @@ import java.sql.SQLException;
 @AutoConfigureBefore(DataSourceAutoConfiguration.class)
 public class DruidAutoConfig {
     @Autowired
-    private Druid properties;
+    private Druid druid;
 
     @Bean
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl(properties.getUrl());
-        dataSource.setUsername(properties.getUsername());
-        dataSource.setPassword(properties.getPassword());
-        if (properties.getInitialSize() > 0) {
-            dataSource.setInitialSize(properties.getInitialSize());
+        dataSource.setUrl(druid.getUrl());
+        dataSource.setUsername(druid.getUsername());
+        dataSource.setPassword(druid.getPassword());
+        if (druid.getInitialSize() > 0) {
+            dataSource.setInitialSize(druid.getInitialSize());
         }
-        if (properties.getMinIdle() > 0) {
-            dataSource.setMinIdle(properties.getMinIdle());
+        if (druid.getMinIdle() > 0) {
+            dataSource.setMinIdle(druid.getMinIdle());
         }
-        if (properties.getMaxActive() > 0) {
-            dataSource.setMaxActive(properties.getMaxActive());
+        if (druid.getMaxActive() > 0) {
+            dataSource.setMaxActive(druid.getMaxActive());
         }
-        dataSource.setTestOnBorrow(properties.isTestOnBorrow());
+        dataSource.setTestOnBorrow(druid.isTestOnBorrow());
         try {
             dataSource.init();
         } catch (SQLException e) {
