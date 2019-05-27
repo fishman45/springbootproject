@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date: Create in 2019/4/21 上午 10:42
  */
 @Data
-@ConfigurationProperties(prefix = "druid")
+@ConfigurationProperties(prefix = "spring.profiles.druid")
 public class Druid {
 
     /**
